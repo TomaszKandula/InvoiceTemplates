@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        body 
+        {
+            background: rgb(204,204,204); 
+        }
+        page 
+        {
+            background: white;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            box-shadow: none;
+        }
+        page[size="A4"] 
+        {  
+            width: 21cm;
+            height: 29.7cm; 
+        }
+        page[size="A4"][layout="landscape"] 
+        {
+            width: 29.7cm;
+            height: 21cm;  
+        }
+        @media print 
+        {
+            body, page 
+            {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+        h1, h2, h3, h4, h5, h6
+        {
+            margin: 0;
+            padding: 0;
+        }
+        p
+        {
+            margin: 0;
+            padding: 0;
+        }
+        .footer
+        {
+            position: absolute;
+            bottom: 120px;
+            width: 21cm;
+            height: auto;
+        }
+        .container
+        {
+            width: 100%;
+        }
+        .row
+        {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .col-3
+        {
+            width: 33%;
+            flex: 0 0 auto;
+        }
+        .col-5
+        {
+            width: 50%;
+            flex: 0 0 auto;
+        }
+        .col-6
+        {
+            width: 66%;
+            flex: 0 0 auto;
+        }
+        .company-details
+        {
+            float: right;
+            text-align: right;
+        }
+        .brand-section
+        {
+           background-color: #1976D2;
+           padding: 10px 40px;
+        }
+        .body-section
+        {
+            padding: 16px;
+        }
+        .heading
+        {
+            margin-bottom: 8px;
+        }
+        .sub-heading
+        {
+            color: #262626;
+            margin-bottom: 5px;
+        }
+        .separator
+        {
+            border: 1px solid #DFDFDF;            
+        }
+        table
+        {
+            background-color: #FFFFFF;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table thead tr
+        {
+            border: 1px solid #111111;
+            background-color: #FAFAFA;
+        }
+        table td 
+        {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+        table th, table td 
+        {
+            padding-top: 08px;
+            padding-bottom: 08px;
+        }
+        .table-bordered
+        {
+            border: 1px solid #EFEFEF;
+        }
+        .table-bordered td, .table-bordered th 
+        {
+            border: 1px solid #DEE2E6;
+        }
+        .table-header
+        {
+            font-size: 12px;
+        }
+        .F15
+        {
+            width: 33%;
+        }
+        .table-cell
+        {
+            font-size: 12px;
+        }
+        .text-white
+        {
+            color: #FFFFFF;
+        }
+        .text-right
+        {
+            font-size: 12px;
+            text-align: end;
+        }
+        .text-left
+        {
+            text-align: start;
+        }
+        .text-center
+        {
+            text-align: center;
+        }
+        .float-right
+        {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <page size="A4">
+        <div class="container">
+
+            <div class="brand-section">
+                <div class="row">
+                    <div class="col-5">
+                        <h2 class="text-white">{{F1}}</h2>
+                    </div>
+                    <div class="col-5">
+                        <div class="company-details">
+                            <p class="text-white">{{F2}}</p>
+                            <p class="text-white">{{F3}}</p>
+                            <p class="text-white">{{F4}}</p>
+                            <p class="text-white">{{F5}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-section">
+                <div class="row">
+                    <h3 class="heading">Invoice Number: {{F6}}</h3>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-3">
+                        <p class="sub-heading">Value Date: {{F7}}</p>
+                        <p class="sub-heading">Due Date: {{F8}}</p>
+                        <p class="sub-heading">Payment Terms: {{F9}} days</p>
+                    </div>
+                    <div class="col-6">
+                        <p class="sub-heading">Customer Name: {{F10}}</p>
+                        <p class="sub-heading">Customer VAT Number: {{F11}}</p>
+                        <p class="sub-heading">Customer Address: {{F12}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="body-section">
+                <h3 class="heading">Ordered Items</h3>
+                <br>
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="table-header F15">DESCRIPTION</th>
+                            <th class="table-header">QTY</th>
+                            <th class="table-header">UNIT</th>
+                            <th class="table-header">ITEM<br>AMOUNT</th>
+                            <th class="table-header">DISC.<br>RATE</th>
+                            <th class="table-header">VALUE<br>AMOUNT</th>
+                            <th class="table-header">VAT<br>RATE</th>
+                            <th class="table-header">GROSS<br>AMOUNT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <row-template><tr>
+                            <td class="table-cell text-left">{{F13}}</td>
+                            <td class="table-cell">{{F14}}</td>
+                            <td class="table-cell">{{F15}}</td>
+                            <td class="table-cell">{{F16}}</td>
+                            <td class="table-cell">{{F17}}</td>
+                            <td class="table-cell">{{F18}}</td>
+                            <td class="table-cell">{{F19}}</td>
+                            <td class="table-cell">{{F20}}</td>
+                        </tr></row-template>
+                        <tr>
+                            <td colspan="7" class="text-right">Total Amount</td>
+                            <td class="table-cell">{{F21}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h4 class="heading">Invoice Currency: {{F22}}</h4>
+                <br>
+                <h4 class="heading">Bank Account: {{F25}}</h4>
+                <h4 class="heading">Bank Name: {{F23}}</h4>
+                <h4 class="heading">SWIFT: {{F24}}</h4>
+                <br>
+                <h4 class="heading">Payment Status: {{F26}}</h4>
+                <h4 class="heading">Payment Method: {{F27}}</h4>
+            </div>
+
+        </div>
+
+        <div class="footer text-center">&copy; Copyright 2020-2022 Tomasz Kandula. All rights reserved.</div>
+
+    </page>
+</body>
+</html>
