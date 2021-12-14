@@ -6,7 +6,7 @@ The printout fits the A4 format, and the Invoice Generator project uses both. Th
 
 ## How to use it
 
-Replace all the "mustache" tags. It begins with two opening braces `{{` and ends with two closing braces `}}`.
+Replace all the "moustache" tags. It begins with two opening braces `{{` and ends with two closing braces `}}`.
 
 ### Header section
 
@@ -60,8 +60,8 @@ This can be done with REGEX:
 
 ```(?<=<row-template>)((.|\n)*)(?=<\/row-template>)``` 
 
-Once done it, replace tags `{{F13..F20}}` with your data for each item and put it back to the invoice template.
+Once done, replace tags `{{F13..F20}}` with your data for each item and put it back to the invoice template.
 
-## End note
+## Endnote
 
-More language version will be added.
+More language versions will be added.
